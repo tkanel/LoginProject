@@ -7,6 +7,10 @@ function myFunction() {
     //document.getElementById("demo").innerHTML = txt;
 }
 
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
 
 
 
@@ -22,6 +26,21 @@ function checkForm(form) {
         form.username.focus();
         return false;
     }
+    if (form.email.value == "") {
+        alert("Error: Email cannot be blank!");
+        form.email.focus();
+        return false;
+    } else {
+
+        if (!validateEmail(form.email.value)) {
+
+            alert("the email you have entered is not valid");
+            form.email.focus();
+            return false;
+
+        }
+    }
+
     re = /^\w+$/;
     if (!re.test(form.username.value)) {
         alert("Error: Username must contain only letters, numbers and underscores!");
