@@ -9,7 +9,7 @@ function lockSite() {
 
     } else {
 
-        alert("site locked , you have to pay");
+        alert("site locked , you have to pay asshole!!!!");
         var css = document.createElement("style");
         css.type = "text/css";
         css.innerHTML = "body * { display: none !important; }";
@@ -18,7 +18,23 @@ function lockSite() {
     }
 }
 
-lockSite();
+//lockSite();
+
+
+function testEmailAddress(emailToTest) {
+    // check for @ τουλάχιστον 1 χαρακτήρα πριν
+    var atSymbol = emailToTest.indexOf("@");
+    if(atSymbol < 1) return false;
+
+    var dot = emailToTest.indexOf(".");
+    if(dot <= atSymbol + 2) return false;
+
+    // check that the dot is not at the end
+    if (dot === emailToTest.length - 1) return false;
+
+    return true;
+}
+
 
 function validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -45,7 +61,7 @@ function checkForm(form) {
         return false;
     } else {
 
-        if (!validateEmail(form.email.value)) {
+        if (!testEmailAddress(form.email.value)) {
 
             alert("the email you have entered is not valid");
             form.email.focus();
